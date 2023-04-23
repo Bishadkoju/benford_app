@@ -33,5 +33,6 @@ Open `index.html` and upload the csv. Then click on `check` the result is given 
     
 ## Screenshots
 
-![Screenshot]()
+![Screenshot](ui.png)
+![Screenshot](output.png)
 
