@@ -10,7 +10,7 @@ def hello(request):
 def benford(request):
     # get the uploaded CSV file
     csv_file = request.POST['csv_file'].file
-
+    print(csv_file)
     # parse the CSV file and extract the first digit of each number
     first_digits = []
     csv_reader = csv.reader(codecs.iterdecode(csv_file, 'utf-8'))
@@ -38,6 +38,8 @@ def benford(request):
 
     # prepare the response JSON
     response_data = {'is_conform': is_conform, 'actual_freq': actual_freq}
+    with open('benford_result.json', 'w') as outfile:
+        json.dump(response_data, outfile)
 
     return Response(json.dumps(response_data))
 

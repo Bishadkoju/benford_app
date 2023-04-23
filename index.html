@@ -2,13 +2,40 @@
 <html>
 <head>
     <title>Benford's Law Checker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Benford's Law Checker</h1>
-    <form action="http://localhost:6543/benford" method="post" enctype="multipart/form-data">
+    <form id="benford-form" enctype="multipart/form-data">
         <label for="csv_file">CSV File:</label>
         <input type="file" name="csv_file" id="csv_file"><br><br>
         <input type="submit" value="Check">
     </form>
+    <div id="results"></div>
+    <script>
+        const form = document.getElementById('benford-form');
+
+        form.addEventListener('submit', function(event) {
+            getJson(event);
+        });
+
+        function getJson(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            fetch('http://localhost:6543/benford', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('results');
+                const pre = document.createElement('pre');
+                pre.textContent = JSON.stringify(data, null, 4);
+                resultsDiv.innerHTML = '';
+                resultsDiv.appendChild(pre);
+            })
+            .catch(error => console.error(error));
+        };
+    </script>
 </body>
 </html>

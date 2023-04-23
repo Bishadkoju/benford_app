@@ -1,0 +1,35 @@
+body {
+    background-color: #1d2026;
+    color: white;
+    font-size: 12px;
+}
+form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #363a45;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type=file] {
+    margin-bottom: 20px;
+}
+input[type=submit] {
+    background-color: #00986f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+input[type=submit]:hover {
+    background-color: #00a87f;
+}
+pre {
+    margin: 20px;
+    padding: 20px;
+    background-color: #363a45;
+    white-space: pre-wrap;
+}
